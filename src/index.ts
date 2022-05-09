@@ -1,11 +1,12 @@
 import { isValidAddress, toChecksumAddress } from 'ethereumjs-util';
-const fs = require('fs');
-const path = require('path');
-const readFileSync = (path: string) => JSON.parse(fs.readFileSync(path, 'utf8'));
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
-const ASSETS_LIST_PATH = path.join(__dirname, '..', 'assets-list.json');
+const _readFileSync = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
 
-const excludedTokens: { [chainId in string]: string[] } = readFileSync(ASSETS_LIST_PATH);
+const ASSETS_LIST_PATH = join(__dirname, '..', 'assets-list.json');
+
+const excludedTokens: { [chainId in string]: string[] } = _readFileSync(ASSETS_LIST_PATH);
 
 const isTokenExcluded = (chainId: number, address: string): boolean => {
   if (!isValidAddress(address)) {
