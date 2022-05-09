@@ -33,12 +33,11 @@
   },
   "homepage": "https://github.com/block-wallet/banned-assets#readme",
   "dependencies": {
-    "@types/node": "^17.0.31",
     "ethereumjs-util": "^7.1.4",
-    "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   },
   "devDependencies": {
+    "ts-node": "^10.7.0",
     "@types/jest": "^27.5.0",
     "jest": "^28.1.0",
     "prettier": "^2.6.2",
