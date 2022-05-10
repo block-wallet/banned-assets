@@ -35,3 +35,4 @@ yarn-error.log*
 .idea
 
 .assets-list.json
+assets-list.json
