@@ -33,6 +33,3 @@ yarn-error.log*
 .env
 
 .idea
-
-assets-list.json
-.assets-list.json
