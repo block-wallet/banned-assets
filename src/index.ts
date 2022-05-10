@@ -1,9 +1,5 @@
 import { isValidAddress, toChecksumAddress } from 'ethereumjs-util';
-import { join } from 'path';
-
-const ASSETS_LIST_PATH = join(__dirname, '..', 'assets-list.json');
-
-const excludedTokens: { [chainId in string]: string[] } = require(ASSETS_LIST_PATH);
+import excludedTokens from './assets-list';
 
 const isTokenExcluded = (chainId: number, address: string): boolean => {
   if (!isValidAddress(address)) {

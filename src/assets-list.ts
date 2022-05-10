@@ -1401,5 +1401,4 @@ const excludedTokens: { [chainId in string]: string[] } = {
     '0xB7bfB42759390c145285a8617aDE32B5fa990778',
   ],
 };
-
 export default excludedTokens;

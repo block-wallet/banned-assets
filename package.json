@@ -9,10 +9,10 @@
   ],
   "scripts": {
     "test": "jest --config jestconfig.json",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "normalize": "node normalize.js",
-    "build": "tsc"
+    "normalize": "node normalize.js && npm run format",
+    "build": "npm run normalize && npm run lint && tsc"
   },
   "repository": {
     "type": "git",
