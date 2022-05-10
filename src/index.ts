@@ -1,10 +1,9 @@
-const read = require('read-file');
 import { isValidAddress, toChecksumAddress } from 'ethereumjs-util';
 import { join } from 'path';
 
 const ASSETS_LIST_PATH = join(__dirname, '..', 'assets-list.json');
 
-const excludedTokens: { [chainId in string]: string[] } = JSON.parse(read.sync(ASSETS_LIST_PATH, 'utf8'));
+const excludedTokens: { [chainId in string]: string[] } = require(ASSETS_LIST_PATH);
 
 const isTokenExcluded = (chainId: number, address: string): boolean => {
   if (!isValidAddress(address)) {
