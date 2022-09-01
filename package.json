@@ -12,7 +12,8 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "normalize": "node normalize.js && npm run format",
-    "build": "npm run normalize && npm run lint && npm run test && tsc"
+    "build": "npm run normalize && npm run lint && npm run test && tsc",
+    "bump": "yarn version --patch --no-git-tag-version --no-commit-hooks"
   },
   "repository": {
     "type": "git",
