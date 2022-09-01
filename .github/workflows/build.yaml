@@ -12,7 +12,7 @@ env:
 
 jobs:
   build:
-    runs-on: [self-hosted, small]
+    runs-on: ubuntu-latest
     steps:
 
       - name: Initialize mandatory git config
