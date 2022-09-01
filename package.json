@@ -12,7 +12,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "normalize": "node normalize.js && npm run format",
-    "build": "npm run normalize && npm run lint && tsc"
+    "build": "npm run normalize && npm run lint && npm run test && tsc"
   },
   "repository": {
     "type": "git",

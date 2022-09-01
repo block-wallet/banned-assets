@@ -34,5 +34,7 @@ yarn-error.log*
 
 .idea
 
-.assets-list.json
-assets-list.json
+.assets-list.ts
+.src/assets-list.ts
+src/assets-list.ts
+assets-list.ts
