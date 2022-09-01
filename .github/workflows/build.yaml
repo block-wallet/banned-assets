@@ -1,0 +1,61 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'assets-list.json'
+
+env:
+  GH_ACCESS_TOKEN: ${{ secrets.USER_PAT }}:${{ secrets.PAT }}
+
+jobs:
+  build:
+    runs-on: [self-hosted, small]
+    steps:
+
+      - name: Initialize mandatory git config
+        run: |
+          git config --global user.name builder
+          git config --global user.email builder@blockwallet.io
+          git config --global url.https://$GH_ACCESS_TOKEN@github.com/.insteadOf https://github.com/
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install yarn
+        run: |
+          npm install --global yarn
+
+      - name: Dependency cache
+        uses: actions/cache@v3
+        with:
+          path: "node_modules"
+          key: ${{ runner.os }}-banned-assets-v1-${{ hashFiles('yarn.lock') }}
+
+      - name: Install packages dependencies
+        run: |
+          yarn install --prefer-offline --frozen-lockfile
+
+      - name: Build
+        run: |
+          yarn build
+
+      - name: Commit and push changes
+        run: |
+          yarn bump
+          git add package.json lib/ 
+          git commit -m "chore: update lib/ and version"
+          git push
+
+      - name: Push tag
+        run: |
+          version=$(cat package.json | jq .version)
+          git tag $version
+          git push --tags
