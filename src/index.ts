@@ -1,4 +1,5 @@
 import { isValidAddress, toChecksumAddress } from 'ethereumjs-util';
+// @ts-ignore
 import excludedTokens from './assets-list';
 
 const isTokenExcluded = (chainId: number, address: string): boolean => {
